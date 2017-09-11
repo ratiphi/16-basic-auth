@@ -35,6 +35,7 @@ describe('Testing basic auth routes', function() {
         // .set('Authorization', `${this.mockUserData.username}:${this.mockUserData.password}`)
         .then(res => {
           // expect(res.body.token).toMatch(some regex string pattern)
+          console.log(res.body);
           expect(res.body).toHaveProperty('token');
         });
     });
