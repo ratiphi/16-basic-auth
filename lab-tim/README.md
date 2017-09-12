@@ -13,8 +13,15 @@ This server uses MongoDB for data storage.  To run the database you must have Mo
 To send requests to the server, in another terminal windows, type some of the following commands.
 
 
-`http POST localhost:5000/api/signup name='Joe' password='dirt' email='test@email.com'` should create a new user named Joe with a password and email attached and return a message with the user's hash if successful.
+`http POST localhost:5000/api/signup username='username' password='password' email='email@email.com'` should create a new user named Joe with a password and email attached and return a message with the user's hash if successful.
 
-`http -s username:password localhost:5000/api/signin` should return the user's hash if the input username and password are valid.
+`http -a username:password localhost:5000/api/signin` should return the user's hash if the input username and password are valid.
 
 Type control + C to stop the server.
+
+example requests:
+
+`http POST localhost:5000/api/signup username="Joe" password="imjoedirt" email="joe@dirt.com"`
+`http -a Joe:imjoedirt localhost:5000/api/signin`
+`http POST localhost:5000/api/signup username="Bill" password="ghostbusters" email="bill@murray.com"`
+`http -a Bill:ghostbusters localhost:5000/api/signin`

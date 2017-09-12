@@ -6,7 +6,7 @@ const basicAuth = require('../lib/basic-auth-middleware');
 const User = require('../model/user');
 
 module.exports = function(router) {
-  router.post('/api/signup', (req, res) => {
+  router.post('/api/signup', (req, res, next) => {
     debug('POST /api/signup');
 
     // get rid of the PW on req.body before the req is handed back as a nested object in the res
@@ -22,7 +22,7 @@ module.exports = function(router) {
       .catch(err => errorHandler(err, req, res));
   });
 
-  router.get('/api/signin', basicAuth, (req, res) => {
+  router.get('/api/signin', basicAuth, (req, res, next) => {
     debug('GET /api/signin');
 
     return User.findOne({ username: req.auth.username })
